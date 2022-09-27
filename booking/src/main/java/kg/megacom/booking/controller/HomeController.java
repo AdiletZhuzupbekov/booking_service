@@ -1,6 +1,7 @@
 package kg.megacom.booking.controller;
 
 import kg.megacom.booking.microservices.json.HotelServiceResponse;
+import kg.megacom.booking.microservices.json.UrlResponse;
 import kg.megacom.booking.service.HotelService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,10 +27,6 @@ public class HomeController {
         HotelServiceResponse[] hotels = hotelService.getHotels();
         model.addAttribute("hotels", hotels);
         return "home";
-    }
-    @PostMapping("/photo")
-    public Long addPhoto(@RequestPart MultipartFile file){
-        return hotelService.addPhoto(file);
     }
     @GetMapping("/findByCity")
     public String findByCity(Model model, @RequestParam(required = false) String city){

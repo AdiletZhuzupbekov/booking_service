@@ -1,0 +1,164 @@
+<div th:fragment="hotelinfo" class="row justify-content-around" >
+    <div class="row">
+        <div class="col-md-4 order-md-2 mb-4">
+            <h4 class="d-flex justify-content-between align-items-center mb-3">
+                <span class="text-muted ml-4">Поиск намеров</span>
+                <span class="badge badge-secondary badge-pill ">booking</span>
+            </h4>
+
+
+            <form class="card p-2 ml-4 bg-light border-info ">
+
+                <b>Количество гостей</b>
+                <div class="input-group mt-2">
+                    <input type="text" class="form-control" placeholder="0">
+                </div>
+                <b>Дата заселения</b>
+                <div class="input-group mt-2">
+                    <input type="text" class="form-control" placeholder="yyyy-MM-dd">
+                </div>
+                <b>Дата выезда</b>
+                <div class="input-group mt-2">
+                    <input type="text" class="form-control" placeholder="yyyy-MM-dd">
+                </div>
+
+
+                <div class="input-group mt-2 ml-3">
+                        <button type="submit" class="btn btn-dark">Найти</button>
+                </div>
+            </form>
+            <hr class="mb-4">
+            <form class="card p-2 mt-4 ml-4 bg-light border-info ">
+
+                <b>Удобства</b>
+                <div class="input-group mt-2">
+                    <span class="border border-info rounded  ">  <img class="ml-2 mr-2" src="http://localhost:8082/file/download/pool.png" width="35" height="35" alt="">   | Басссейн  .</span>
+                </div>
+                <div class="input-group mt-2">
+                    <span class="border border-info rounded ">.     Парковка |  <img class="ml-2 mr-2" src="http://localhost:8082/file/download/parking.png" width="35" height="35" alt=""></span>
+                </div>
+                <div class="input-group mt-2">
+
+                    <span class="border border-info rounded "><img class="ml-2 mr-2" src="http://localhost:8082/file/download/restorant.png" width="35" height="35" alt=""> | Ресторан</span>
+                </div>
+                <div class="input-group mt-2">
+                    <span class="border border-info rounded " >.  Спортзал | <img class="ml-2 mr-2" src="http://localhost:8082/file/download/jym.png" width="35" height="35" alt=""> </span>
+                </div>
+               
+            </form>
+        </div>
+        <div class="col-md-8 order-md-1">
+            <h4 class="mb-3">Novotel Bishkek</h4>
+            <img src="http://localhost:8082/file/download/novotel.jpg"  alt="">
+            <hr class="mb-4">
+            <form class="card p-2 mt-4 bg-light border-info">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <span>Адрес: </span><br>
+                        <span>Телефон: </span><br>
+                        <span>wi-fi</span><br>
+                        <span> тренажорный зал </span>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <span> ул. Абдырахманова 195</span><br>
+                        <span> +99555666666</span><br>
+                        <span> бесплатный </span><br>
+                        <span> 24/7 </span>
+                    </div>
+                </div>
+            </form>
+
+            <h4 class="mb-3">Доступные номера</h4>
+            <form class="card p-2 mt-4 bg-light border-warning">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <img src="http://localhost:8082/file/download/novotel.jpg" width="230" height="200" alt="">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <h4 class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="text-muted ml-4">classification</span>
+                        </h4>
+                        <div class="input-group mt-2">
+                            <span class="border  rounded ml-2"> 1 комнат | <img class="ml-2" src="http://localhost:8082/file/download/room.png" width="35" height="35" alt=""> </span>
+                        </div>
+                        <div class="input-group mt-2">
+                            <span class="border  rounded ml-2"> 2 персон | <img class="ml-2" src="http://localhost:8082/file/download/group.png" width="35" height="35" alt=""> </span>
+                        </div>
+                        <div class="input-group mt-2">
+                            <b class="border  rounded ml-2"> стоимость  | 50$</b>
+                        </div>
+                        <div class="input-group mt-2">
+                            <a class="link link-info rounded ml-2" type="submit" href="#payment"> забронировать</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+
+            <form class="needs-validation" novalidate="" id="payment">
+                <hr class="mb-4">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="same-address">
+                    <label class="custom-control-label" for="same-address">Трансфер с аэропарта  (не входит в стоимость номера)</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="save-info">
+                    <label class="custom-control-label" for="save-info">Трансфер внутри города  (не входит в стоимость номера)</label>
+                </div>
+                <hr class="mb-4">
+
+                <h4 class="mb-3">Оплата</h4>
+
+                <div class="d-block my-3">
+                    <div class="custom-control custom-radio">
+                        <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked="" required="">
+                        <label class="custom-control-label" for="credit">Credit card</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required="">
+                        <label class="custom-control-label" for="debit">Debit card</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required="">
+                        <label class="custom-control-label" for="paypal">Paypal</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="cc-name">Название карты</label>
+                        <input type="text" class="form-control" id="cc-name" placeholder="" required="">
+                        <small class="text-muted">ФИО как на карте</small>
+                        <div class="invalid-feedback">
+                            Name on card is required
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="cc-number">Номер кредитной карты</label>
+                        <input type="text" class="form-control" id="cc-number" placeholder="" required="">
+                        <div class="invalid-feedback">
+                            Credit card number is required
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 mb-3">
+                        <label for="cc-expiration">Срок действия</label>
+                        <input type="text" class="form-control" id="cc-expiration" placeholder="" required="">
+                        <div class="invalid-feedback">
+                            Expiration date required
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="cc-expiration">CVV</label>
+                        <input type="text" class="form-control" id="cc-cvv" placeholder="" required="">
+                        <div class="invalid-feedback">
+                            Security code required
+                        </div>
+                    </div>
+                </div>
+                <hr class="mb-4">
+                <button class="btn btn-primary btn-lg btn-block" type="submit">Оплатить</button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,10 +1,11 @@
 package kg.megacom.booking.service;
 
 import kg.megacom.booking.microservices.json.HotelServiceResponse;
+import kg.megacom.booking.microservices.json.UrlResponse;
 import org.springframework.web.multipart.MultipartFile;
 
 public interface HotelService {
-    Long addPhoto(MultipartFile file);
+    UrlResponse addPhoto(MultipartFile file);
 
     HotelServiceResponse[] getHotels();
 

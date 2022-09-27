@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import kg.megacom.booking.microservices.FileServiceFeign;
 import kg.megacom.booking.microservices.HotelServiceFeign;
 import kg.megacom.booking.microservices.json.HotelServiceResponse;
+import kg.megacom.booking.microservices.json.UrlResponse;
 import kg.megacom.booking.service.HotelService;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -21,9 +22,8 @@ public class HotelServiceImpl implements HotelService {
     }
 
     @Override
-    public Long addPhoto(MultipartFile file) {
-        fileServiceFeign.upload(file);
-        return null;
+    public UrlResponse addPhoto(MultipartFile file) {
+        return fileServiceFeign.upload(file);
     }
 
     @Override
