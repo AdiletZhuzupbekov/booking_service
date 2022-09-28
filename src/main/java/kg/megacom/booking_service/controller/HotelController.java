@@ -28,4 +28,8 @@ public class HotelController {
     List<HotelDto> findByCity(String city){
         return hotelService.findByCity(city);
     }
+    @GetMapping("/{name}")
+    HotelDto findByName(@PathVariable String name){
+        return hotelService.findByName(name);
+    }
 }

@@ -1,5 +1,7 @@
 package kg.megacom.booking_service.controller;
 
+import kg.megacom.booking_service.model.Apartment;
+import kg.megacom.booking_service.model.Hotel;
 import kg.megacom.booking_service.model.dto.ApartmentDto;
 import kg.megacom.booking_service.model.enums.ApartmentClassification;
 import kg.megacom.booking_service.service.BookingService;
@@ -13,7 +15,7 @@ import java.util.Date;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/booking")
+@RequestMapping("hotel")
 public class BookingController {
     private final BookingService bookingService;
 
@@ -21,12 +23,13 @@ public class BookingController {
         this.bookingService = bookingService;
     }
 
-    @GetMapping("available")// проверка свободных намеров
+    @GetMapping("/available")// проверка свободных намеров
     List<ApartmentDto> checkAvailable(
-            @RequestParam(required = false) Long hotelId,
-            @RequestParam(required = false) ApartmentClassification classification,
+
+            @RequestParam Byte person,
+            @RequestParam Long id,
             @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date startDate,
             @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date endDate){
-        return bookingService.getInfo(hotelId, classification,startDate, endDate);
+        return bookingService.getInfo(person,id,startDate, endDate);
     }
 }

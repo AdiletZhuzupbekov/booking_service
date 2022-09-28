@@ -17,6 +17,9 @@ public class Apartment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Integer roomNumber;
+    private Byte person;
+    private Double price;
+    private String imgUrl;
     private Byte rooms;
     @Enumerated(EnumType.STRING)
     private BookStatus bookStatus;
@@ -25,4 +28,5 @@ public class Apartment {
     @ManyToOne
     @JoinColumn(name = "hotel_id")
     private Hotel hotel;
+
 }

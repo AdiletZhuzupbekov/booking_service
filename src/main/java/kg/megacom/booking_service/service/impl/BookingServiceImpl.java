@@ -28,8 +28,8 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
-    public List<ApartmentDto> getInfo(Long hotelId, ApartmentClassification classification,Date startDate, Date endDate) {
-        List<Apartment> availableApartment = apartmentRepo.findAvailable(startDate,endDate);
+    public List<ApartmentDto> getInfo(Byte person, Long hotelId, Date startDate, Date endDate) {
+        List<Apartment> availableApartment = apartmentRepo.findAvailable(person, hotelId, startDate,endDate);
         return apartmentMapper.toDtoList(availableApartment);
     }
 

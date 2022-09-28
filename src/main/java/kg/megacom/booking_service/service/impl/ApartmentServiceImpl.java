@@ -8,6 +8,8 @@ import kg.megacom.booking_service.repository.HotelRepo;
 import kg.megacom.booking_service.service.ApartmentService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ApartmentServiceImpl implements ApartmentService {
     private final ApartmentRepo apartmentRepo;
@@ -28,4 +30,11 @@ public class ApartmentServiceImpl implements ApartmentService {
         apartmentRepo.save(apartment);
         return apartmentDto;
     }
+
+    @Override
+    public List<ApartmentDto> findByHotelName(String name) {
+        List<Apartment> apartments = apartmentRepo.findAllByHotel_Name(name);
+        return apartmentMapper.toDtoList(apartments);
+    }
+
 }

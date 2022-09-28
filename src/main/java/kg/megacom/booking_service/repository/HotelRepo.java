@@ -9,4 +9,6 @@ import java.util.List;
 @Repository
 public interface HotelRepo extends JpaRepository<Hotel,Long> {
     List<Hotel> findAllByCity(String text);
+
+    Hotel findByName(String name);
 }

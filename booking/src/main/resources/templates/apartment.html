@@ -1,0 +1,71 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:insert="parts/head"></div>
+<body  class="d-flex flex-column min-vh-100">
+
+
+
+<div th:insert="parts/hotelHeader"></div>
+<div class="container">
+<div class="row justify-content-around p-4 p-md-5 mt-4 rounded text-bg-dark bg-light">
+</div>
+<div class="row">
+    <div class="col-md-4 order-md-2 mb-4">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+            <a class="text-muted ml-4" href="/">Вернутся на главную</a>
+        </h4>
+        <hr class="mb-4">
+        <form class="card p-2 mt-4 ml-4 bg-light border-info ">
+
+            <b>Удобства</b>
+            <div class="input-group mt-2">
+                <span class="border border-info rounded  ">  <img class="ml-2 mr-2" src="http://localhost:8082/file/download/pool.png" width="35" height="35" alt="">   | Басссейн  .</span>
+            </div>
+            <div class="input-group mt-2">
+                <span class="border border-info rounded ">.     Парковка |  <img class="ml-2 mr-2" src="http://localhost:8082/file/download/parking.png" width="35" height="35" alt=""></span>
+            </div>
+            <div class="input-group mt-2">
+
+                <span class="border border-info rounded "><img class="ml-2 mr-2" src="http://localhost:8082/file/download/restorant.png" width="35" height="35" alt=""> | Ресторан</span>
+            </div>
+            <div class="input-group mt-2">
+                <span class="border border-info rounded " >.  Спортзал | <img class="ml-2 mr-2" src="http://localhost:8082/file/download/jym.png" width="35" height="35" alt=""> </span>
+            </div>
+
+        </form>
+    </div>
+    <div class="col-md-8 order-md-1" >
+
+        <h4 class="mb-3">Доступные номера</h4>
+        <form th:each="apart : ${apart}" class="card p-2 mt-4 bg-light border-warning" id="available" >
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <img th:src="${apart.imgUrl}" width="230" height="200" alt="">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <h4 class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="text-muted ml-4" th:text="${apart.classification}"></span>
+                    </h4>
+                    <div class="input-group mt-2">
+                        <span class="border  rounded ml-2" th:text="'  комнат | ' +${apart.rooms}"> <img class="ml-2" src="http://localhost:8082/file/download/room.png" width="35" height="35" alt=""> </span>
+                    </div>
+                    <div class="input-group mt-2">
+                        <span class="border  rounded ml-2" th:text="'  персон | ' +${apart.person}">  персон | <img class="ml-2" src="http://localhost:8082/file/download/group.png" width="35" height="35" alt=""> </span>
+                    </div>
+                    <div class="input-group mt-2">
+                        <b class="border  rounded ml-2" th:text="' стоимость  | ' +${apart.price}+ '$'"></b>
+                    </div>
+                    <div class="input-group mt-2">
+                        <a class="link link-info rounded ml-2" type="submit" href="/reservation"> забронировать</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+
+<div th:replace="parts/footer"></div>
+
+
+</body>
+</html>

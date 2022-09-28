@@ -1,22 +1,26 @@
 package kg.megacom.booking_service.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import kg.megacom.booking_service.model.Hotel;
 import kg.megacom.booking_service.model.enums.ApartmentClassification;
 import kg.megacom.booking_service.model.enums.BookStatus;
 import lombok.Data;
 
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 @Data
 public class ApartmentDto {
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Long id;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Integer roomNumber;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private Integer person;
+    private Double price;
+    private String imgUrl;
     private Byte rooms;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private BookStatus bookStatus;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private ApartmentClassification classification;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Long hotelId;
+
 }

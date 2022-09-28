@@ -10,4 +10,6 @@ public interface HotelService {
     HotelServiceResponse[] getHotels();
 
     HotelServiceResponse[] findByCity(String city);
+
+    HotelServiceResponse findByName(String name);
 }

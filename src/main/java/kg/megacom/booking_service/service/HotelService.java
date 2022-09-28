@@ -10,4 +10,6 @@ public interface HotelService {
     List<HotelDto> findAll();
 
     List<HotelDto> findByCity(String city);
+
+    HotelDto findByName(String name);
 }

@@ -31,7 +31,6 @@ public class HomeController {
     @GetMapping("/findByCity")
     public String findByCity(Model model, @RequestParam(required = false) String city){
         HotelServiceResponse[] hotels = hotelService.findByCity(city);
-        System.out.println(Arrays.toString(hotels));
         model.addAttribute("hotels", hotels);
         return "home";
     }

@@ -42,4 +42,10 @@ public class HotelServiceImpl implements HotelService {
         }
         return hotelMapper.toDtoList(hotel);
     }
+
+    @Override
+    public HotelDto findByName(String name) {
+        Hotel hotel = hotelRepo.findByName(name);
+        return hotelMapper.toDto(hotel);
+    }
 }

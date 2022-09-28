@@ -35,4 +35,9 @@ public class HotelServiceImpl implements HotelService {
     public HotelServiceResponse[] findByCity(String city) {
         return hotelServiceFeign.findByCity(city);
     }
+
+    @Override
+    public HotelServiceResponse findByName(String name) {
+        return hotelServiceFeign.findByName(name);
+    }
 }
