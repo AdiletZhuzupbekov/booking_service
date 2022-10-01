@@ -35,7 +35,7 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public List<ApartmentDto> getInfo(Byte person, Long hotelId, Date startDate, Date endDate) {
-        Hotel hotel = hotelRepo.findById(hotelId).orElseThrow();
+        Hotel hotel = hotelRepo.findById(hotelId).get();
         List<Apartment> availableApartment;
         if (person != null && startDate != null && endDate != null) {
             availableApartment = apartmentRepo.findAvailable(person, hotelId, startDate, endDate);
@@ -50,11 +50,11 @@ public class BookingServiceImpl implements BookingService {
     @Override
     public BookingDto reservation(Long apartId, Customer customer, Date startDate, Date endDate) {
         Booking booking = new Booking();
-        booking.setApartment(apartmentRepo.findById(apartId).orElseThrow());
+        booking.setApartment(apartmentRepo.findById(apartId).get());
         booking.setCustomer(customer);
         booking.setStartDate(startDate);
         booking.setEndDate(endDate);
-        booking.setHotel(hotelRepo.findById(apartmentRepo.findById(apartId).get().getHotel().getId()).orElseThrow());
+        booking.setHotel(hotelRepo.findById(apartmentRepo.findById(apartId).get().getHotel().getId()).get());
         bookingRepo.save(booking);
         return bookingMapper.toDto(booking);
     }

@@ -26,7 +26,7 @@ public class ApartmentServiceImpl implements ApartmentService {
     @Override
     public ApartmentDto addApartment(ApartmentDto apartmentDto) {
         Apartment apartment = apartmentMapper.toEntity(apartmentDto);
-        apartment.setHotel(hotelRepo.findById(apartmentDto.getHotelId()).orElseThrow());
+        apartment.setHotel(hotelRepo.findById(apartmentDto.getHotelId()).get());
         apartmentRepo.save(apartment);
         return apartmentDto;
     }
