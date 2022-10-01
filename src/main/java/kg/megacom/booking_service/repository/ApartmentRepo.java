@@ -15,5 +15,7 @@ public interface ApartmentRepo extends JpaRepository<Apartment,Long> {
             "b.start_date < ?4 AND b.end_date > ?3 WHERE b.id IS NULL AND  a.person >= ?1 AND a.hotel_id = ?2", nativeQuery = true)
     List<Apartment> findAvailable(Byte person, Long hotelId,Date startDate, Date endDate);
 
+    @Query(value = "SELECT a.* FROM  apartment a  LEFT JOIN booking b ON b.apartment_id = a.id AND " +
+            "b.start_date <= current_timestamp AND b.end_date >= current_timestamp WHERE b.id IS NULL", nativeQuery = true)
     List<Apartment> findAllByHotel_Name(String name);
 }

@@ -68,7 +68,7 @@
                 </div>
             </form>
 
-            <h4 class="mb-3">Доступные номера</h4>
+            <h4 class="mb-3">Доступные на сегодня номера</h4>
             <form th:each="apart : ${apart}" class="card p-2 mt-4 bg-light border-warning" id="available" >
                 <div class="row">
                     <div class="col-md-6 mb-3">
@@ -86,9 +86,11 @@
                         </div>
                         <div class="input-group mt-2">
                             <b class="border  rounded ml-2" th:text="' стоимость  | ' +${apart.price}+ '$'"></b>
+                            <input type="hidden" name="price" th:value="${apart.price}">
                         </div>
                         <div class="input-group mt-2">
-                            <a class="link link-info rounded ml-2" type="submit" href="/reservation"> забронировать</a>
+                            <input type="hidden" name="id" th:value="${apart.id}">
+                            <button class="link link-info rounded ml-2" type="submit" href="#search" > забронировать</button>
                         </div>
                     </div>
                 </div>

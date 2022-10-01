@@ -11,7 +11,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.text.ParseException;
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 @Controller
 public class HotelController {
@@ -32,12 +38,24 @@ public class HotelController {
         return "hotel";
     }
     @GetMapping("/filter")
-    public String filter(Model model, @RequestParam Byte person, @RequestParam Long id,
-                         @DateTimeFormat(pattern = "yyyy-MM-dd")@RequestParam Date start,
-                         @DateTimeFormat(pattern = "yyyy-MM-dd")@RequestParam Date end) {
+    public String filter(Model model,
+                         @RequestParam(required = false) Byte person,
+                         @RequestParam Long id,
+                         @DateTimeFormat(pattern = "yyyy-MM-dd")@RequestParam(required = false) Date start,
+                         @DateTimeFormat(pattern = "yyyy-MM-dd")@RequestParam(required = false) Date end) {
         ApartmentServiceResponse[] apartment = apartmentService.filter(person, id, start, end);
         model.addAttribute("title","Booking");
         model.addAttribute("apart", apartment);
+        model.addAttribute("start", start);
+        model.addAttribute("end", end);
+        System.out.println(start);
+
+
+        Long totalDays = end.getTime() - start.getTime();
+        int days = (int) TimeUnit.DAYS.convert(totalDays, TimeUnit.MILLISECONDS);
+
+        model.addAttribute("days", days);
+
         return "apartment";
     }
 }

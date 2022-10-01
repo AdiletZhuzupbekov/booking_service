@@ -1,12 +1,32 @@
-<form th:fragment="payment" class="needs-validation" novalidate="" id="payment">
+<form th:fragment="payment" method="post" action="/reservation" class="needs-validation" novalidate="" id="payment">
   <hr class="mb-4">
   <div class="custom-control custom-checkbox">
-    <input type="checkbox" class="custom-control-input" id="same-address">
+    <input type="checkbox" class="custom-control-input" id="same-address" value="15">
     <label class="custom-control-label" for="same-address">Трансфер с аэропарта  (не входит в стоимость номера)</label>
   </div>
-  <div class="custom-control custom-checkbox">
-    <input type="checkbox" class="custom-control-input" id="save-info">
-    <label class="custom-control-label" for="save-info">Трансфер внутри города  (не входит в стоимость номера)</label>
+  <hr class="mb-4">
+
+  <div class="row">
+    <div class="col-md-6 mb-3">
+    <input type="date" name="start" class="form-control"  th:value="${#dates.format(start, 'yyyy-MM-dd')}" readonly/>
+      <small class="text-muted">Дата заселения</small>
+    </div>
+      <div class="col-md-6 mb-3">
+    <input type="date" name="end" class="form-control ml-1" th:value="${#dates.format(end, 'yyyy-MM-dd')}" readonly/>
+        <small class="text-muted">Дата окончания</small>
+      </div>
+    <div class="col-md-6 mb-3">
+      <b th:text="'Апартаменты ' +${classification}"></b><br>
+    </div>
+    <div class="col-md-6 mb-3">
+      <b th:text="'Полная стоимость ' +${price}+ ' $'"></b><br>
+    </div>
+    <div class="col-md-6 mb-3">
+      <b th:text="'количество дней ' +${days}"></b><br>
+    </div>
+    <div class="col-md-6 mb-3">
+      <input type="hidden" name="id" th:value="${id}">
+    </div>
   </div>
   <hr class="mb-4">
 
@@ -28,18 +48,27 @@
   </div>
   <div class="row">
     <div class="col-md-6 mb-3">
-      <label for="cc-name">Название карты</label>
-      <input type="text" class="form-control" id="cc-name" placeholder="" required="">
+      <label >Название карты</label>
+      <input type="text" class="form-control" name="name" placeholder="Ivanov Ivan" required="">
       <small class="text-muted">ФИО как на карте</small>
       <div class="invalid-feedback">
         Name on card is required
       </div>
     </div>
     <div class="col-md-6 mb-3">
-      <label for="cc-number">Номер кредитной карты</label>
-      <input type="text" class="form-control" id="cc-number" placeholder="" required="">
+      <label >Номер кредитной карты</label>
+      <input type="text" class="form-control"  placeholder="" required="">
       <div class="invalid-feedback">
         Credit card number is required
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <label >Номер телефонв</label>
+      <input type="text" class="form-control" name="phone" placeholder="" required="">
+      <div class="invalid-feedback">
+        Name on card is required
       </div>
     </div>
   </div>
