@@ -41,7 +41,7 @@ public class BookingServiceImpl implements BookingService {
             availableApartment = apartmentRepo.findAvailable(person, hotelId, startDate, endDate);
         }
         else {
-            availableApartment = apartmentRepo.findAllByHotel_Name(hotel.getName());
+            availableApartment = apartmentRepo.findAllByHotelId(hotel.getId());
             return apartmentMapper.toDtoList(availableApartment);
         }
         return apartmentMapper.toDtoList(availableApartment);
