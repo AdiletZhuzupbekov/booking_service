@@ -2,6 +2,7 @@ package kg.megacom.booking_service.service.impl;
 
 import kg.megacom.booking_service.mapper.ApartmentMapper;
 import kg.megacom.booking_service.model.Apartment;
+import kg.megacom.booking_service.model.Hotel;
 import kg.megacom.booking_service.model.dto.ApartmentDto;
 import kg.megacom.booking_service.repository.ApartmentRepo;
 import kg.megacom.booking_service.repository.HotelRepo;
@@ -33,7 +34,8 @@ public class ApartmentServiceImpl implements ApartmentService {
 
     @Override
     public List<ApartmentDto> findByHotelName(String name) {
-        List<Apartment> apartments = apartmentRepo.findAllByHotel_Name(name);
+        Hotel hotel = hotelRepo.findByName(name);
+        List<Apartment> apartments = apartmentRepo.findAllByHotelId(hotel.getId());
         return apartmentMapper.toDtoList(apartments);
     }
 
